@@ -2,7 +2,7 @@
   <nav class="navbar fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a href="index.php" class="navbar-brand"><b>Easyserve</b></a>
+        <a href="index.php" class="navbar-brand"><b>ServiceHub</b></a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>

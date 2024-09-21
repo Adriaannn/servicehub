@@ -40,7 +40,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                <img src="<?php echo (!empty($product['prodphoto'])) ? '../images/'.$product['prodphoto'] : '../images/noimage.jpg'; ?>" width="100%" class="zoom" data-magnify-src="<?php echo (!empty($product['prodphoto'])) ? '../images/'.$product['prodphoto'] : '../images/noimage.jpg'; ?>">
+                                <img src="<?php echo (!empty($product['prodphoto'])) ? './images/'.$product['prodphoto'] : '../images/noimage.jpg'; ?>" width="100%" class="zoom" data-magnify-src="<?php echo (!empty($product['prodphoto'])) ? '../images/'.$product['prodphoto'] : '../images/noimage.jpg'; ?>">
                                 <br><br>
                                 <form class="form-inline" id="productForm">
                                     <div class="form-group">

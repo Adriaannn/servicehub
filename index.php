@@ -68,7 +68,7 @@
                         </ol>
                         <div class="carousel-inner">
                           <div class="item active">
-                            <img src="images/banner2.png" alt="Second slide">
+                            <!--<img src="images/banner2.png" alt="Second slide">-->
                           </div>
                         </div>
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
