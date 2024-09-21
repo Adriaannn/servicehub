@@ -3,17 +3,14 @@
   $where = '';
   if(isset($_GET['category'])){
     $catid = $_GET['category'];
-    $where = 'WHERE category_id ='.$catid;
+    $where = 'WHERE category_id =' . $catid;
   }
-
 ?>
 <?php include 'includes/header.php'; ?>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   <?php include 'includes/navbar.php'; ?>
   <?php include 'includes/menubar.php'; ?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,13 +18,7 @@
       <h1>
         Services List
       </h1>
-      <!-- <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li>Products</li>
-        <li class="active">Product List</li>
-      </ol> -->
     </section>
-
     <!-- Main content -->
     <section class="content">
       <?php
@@ -68,13 +59,13 @@
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
-                  <th>Name</th>
-                  <!-- <th>Photo</th> -->
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Status</th>
-                  <th>Views Today</th>
-                  <th>Tools</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Views Today</th>
+                    <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
@@ -109,11 +100,12 @@
 
                         echo "
                           <tr>
+                            <td><img src='".$image."' alt='Product Image' style='width: 100px; height: auto;'></td>
                             <td>".$row['name']."</td> 
                             <td><a href='#description' data-toggle='modal' class='btn btn-info btn-sm btn-flat desc' data-id='".$row['id']."'><i class='fa fa-search'></i> View</a></td>
                             <td>PHP ".number_format($row['price'], 2)."</td>
                             <td> 
-                            $status
+                            ".$status."
                           </td>
                             <td>".$counter."</td>
                             <td>
@@ -137,11 +129,9 @@
         </div>
       </div>
     </section>
-     
   </div> 
 </div>
 <!-- ./wrapper -->
-
 <?php include 'includes/scripts.php'; ?>
 <?php include 'includes/footer.php'; ?>
 <?php include 'includes/products_modal.php'; ?> 

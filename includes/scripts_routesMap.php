@@ -105,7 +105,8 @@ function getCart(){
           findRoute()
         } 
     }   
-    google.maps.event.addDomListener(window, 'load', initMap);  
+    // NOTE: Disable MAP initialization
+   // google.maps.event.addDomListener(window, 'load', initMap);  
   // 
    function initAutocomplete() {
         if(document.getElementById('autocomplete').value != ""){ 

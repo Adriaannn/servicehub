@@ -16,17 +16,17 @@
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$photo = $_FILES['photo']['name'];
-		if(password_verify($curr_password, $admin['password'])){
+		if(password_verify($curr_password, $seller['password'])){
 			if(!empty($photo)){
 				move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$photo);
 				$filename = $photo;	
 			}
 			else{
-				$filename = $admin['photo'];
+				$filename = $seller['photo'];
 			}
 
-			if($password == $admin['password']){
-				$password = $admin['password'];
+			if($password == $seller['password']){
+				$password = $seller['password'];
 			}
 			else{
 				$password = password_hash($password, PASSWORD_DEFAULT);
@@ -36,7 +36,7 @@
 
 			try{
 				$stmt = $conn->prepare("UPDATE users SET email=:email, password=:password, firstname=:firstname, lastname=:lastname, photo=:photo WHERE id=:id");
-				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'photo'=>$filename, 'id'=>$admin['id']]);
+				$stmt->execute(['email'=>$email, 'password'=>$password, 'firstname'=>$firstname, 'lastname'=>$lastname, 'photo'=>$filename, 'id'=>$seller['id']]);
 
 				$_SESSION['success'] = 'Account updated successfully';
 			}

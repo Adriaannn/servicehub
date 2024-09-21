@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://easyserve.ph/images/sitemap-1.xml

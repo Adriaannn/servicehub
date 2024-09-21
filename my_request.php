@@ -20,6 +20,7 @@
 							<thead> 
 								<th>Status</th> 
 								<th>Service</th>  
+								<th>Date</th>  
 								<!-- <th>Price</th> -->
 								<th>Action</th> 
 							</thead>
@@ -52,7 +53,7 @@
 										$status = "<button class='btn btn-primary btn-sm btn-flat'>FINISHED</button>";
 										$action = "";
 									}
-									 
+									$reqDate =  date('d M Y',strtotime($row['request_date']));
 
 									echo "
 									<tr> 
@@ -61,6 +62,7 @@
 										<td>
 											<button class='jo_info'  data-id='".$row['job_id']."'><i class='fa fa-search' ></i> ".$row['name']."</button>
 										</td>  
+										<td>$reqDate<td>
 										<td>
 											$action 
 									";

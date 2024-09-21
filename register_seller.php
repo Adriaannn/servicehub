@@ -1,8 +1,6 @@
 <?php
-	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\Exception;
-
 	include 'includes/session.php';
+	include 'includes/scripts_sendEmail.php';
 
 	if(isset($_POST['signup'])){
 		$company = $_POST['company'];
@@ -66,56 +64,26 @@
 						<p>Email: ".$email."</p>
 						<p>Password: ".$_POST['password']."</p>
 						<p>Please click the link below to activate your account.</p>
-						<a href='http://easyserve.ph/ecommerce/activate.php?code=".$code."&user=".$userid."'>Activate Account</a>
+						<a href='https://www.easyserve.ph/activate.php?code=".$code."&user=".$userid."'>Activate Account</a>
 					";
 
-					//Load phpmailer
-		    		require 'vendor/autoload.php';
+					// Initialize and use EmailSender to send the email
+       			$emailSender = new EmailSender();
+		       	 try{
+			        $result = $emailSender->sendEmail($email, $message);
 
-		    		$mail = new PHPMailer(true);                             
-				    try {
-				        //Server settings
-				        $mail->isSMTP();                                     
-				        $mail->Host = 'smtp.gmail.com';                      
-				        $mail->SMTPAuth = true;                               
-				        $mail->Username = 'official.easyserve@gmail.com';     
-				        $mail->Password = 'uxlsnitswehqkhdp';                    
-				        $mail->SMTPOptions = array(
-				            'ssl' => array(
-				            'verify_peer' => false,
-				            'verify_peer_name' => false,
-				            'allow_self_signed' => true
-				            )
-				        );                         
-				        $mail->SMTPSecure = 'ssl';                           
-				        $mail->Port = 465;                                   
+			        unset($_SESSION['firstname']);
+			        unset($_SESSION['lastname']);
+			        unset($_SESSION['email']);
 
-				        $mail->setFrom('official.easyserve@gmail.com');
-				        
-				        //Recipients
-				        $mail->addAddress($email);              
-				        $mail->addReplyTo('official.easyserve@gmail.com');
-						$mail->SMTPDebug = 2;
-				        //Content
-				        $mail->isHTML(true);                                  
-				        $mail->Subject = 'EasyServe Sign Up';
-				        $mail->Body    = $message;
+			        $_SESSION['success'] = 'Account created. Check your email to activate.';
+		       		header('location: signup.php');
+			
 
-				        $mail->send();
-
-				        unset($_SESSION['firstname']);
-				        unset($_SESSION['lastname']);
-				        unset($_SESSION['email']);
-
-				        $_SESSION['success'] = 'Account created. Check your email to activate.';
+				  } catch (Exception $e) {
+				        $_SESSION['error'] = 'Message could not be sent. Mailer Error: '. $e->getMessage();
 				        header('location: signup.php');
-
-				    } 
-				    catch (Exception $e) {
-				        $_SESSION['error'] = 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
-				        header('location: signup.php');
-				    }
-
+				   }
 
 				}
 				catch(PDOException $e){
